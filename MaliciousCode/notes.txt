@@ -1,0 +1,17 @@
+Let's say Alice can see the code of Foo and TopLevel but not Malicious.
+It is obvious to Alice that TopLevel.callFoo() executes the code inside Foo.log().
+However Eve deploys TopLevel with the address of Malicious, so that calling TopLevel.callFoo()
+will actually execute the code at Malicious.
+
+1. Eve deploys Malicious
+2. Eve deploys TopLevel with the address of Malicious
+3. Alice calls TopLevel.callFoo() after reading the code and judging that it is
+   safe to call.
+4. Although Alice expected Foo.log() to be execute, Malicious.log() was executed.
+
+Additional notes:
+* Showed how changing the log() function name in PolyScanVisible Foo gets caught by the compiler and is not allowed, 
+ because TopLevel tries calling a non-existent function and the compiler looks for the interface of Foo since we have Foo foo.
+* Showed how if we change log() name in Malicious, compiler doesn't catch this because the deployments are separate,
+ and it simply checks the calls exist in the interface of Foo. Calling the function after deployment will revert because we don't have a fallback function!
+* Showed how we can use a fallback function in our malicious contract.
