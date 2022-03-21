@@ -1,0 +1,4 @@
+[
+  "tests/test_klimadoge.py::test_deploy",
+  "tests/test_klimadoge.py::test_transfer"
+]
