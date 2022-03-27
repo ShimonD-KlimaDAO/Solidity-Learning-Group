@@ -1,0 +1,50 @@
+
+Wallet is a simple contract where only the owner should be able to transfer
+Ether to another address. Wallet.transfer() uses tx.origin to check that the
+caller is the owner. Let's see how we can hack this contract
+
+
+1. Alice deploys Wallet with 5 Ether
+2. Eve deploys Malicious with the address of Alice's Wallet contract.
+3. Eve tricks Alice to call the Malicious fallback by using a verified (on PolygonScan) contract TopLevel that hides malicious code through Foo.
+4. Eve successfully stole Ether from Alice's wallet
+
+What happened?
+Alice was tricked into interacting with Malicious. Inside the Malicious fallback, it
+requested a transfer of all funds in Alice's wallet to Eve's address.
+Since tx.origin in Wallet.transfer() is equal to Alice's address,
+it authorized the transfer. The wallet transferred all Ether to Eve.
+
+
+-------------------------------------------------------
+RESULT OF RUNNING DEPLOY.PY WITH THE PHISHING ATTACK
+-------------------------------------------------------
+
+Alice's contract balance: 5 ether
+Eve's personal balance: 100 ether
+Alice's personal balance: 95 ether
+Transaction sent: 0x0d43c4d403e3562e79801392c2d0408434c61830c16706635d1f0225bda83a4f
+  Gas price: 0.0 gwei   Gas limit: 12000000   Nonce: 1
+  TopLevel.callFoo confirmed   Block: 4   Gas used: 38114 (0.32%)
+
+Alice's contract balance: 0 ether
+Alice's personal balance: 95 ether
+Eve's personal balance: 105 ether
+Transaction was Mined 
+---------------------
+Tx Hash: 0x0d43c4d403e3562e79801392c2d0408434c61830c16706635d1f0225bda83a4f
+From: 0x33A4622B82D4c04a53e170c638B944ce27cffce3
+To: 0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6
+Value: 0
+Function: TopLevel.callFoo
+Block: 4
+Gas Used: 38114 / 12000000 (0.3%)
+
+Events In This Transaction
+--------------------------
+└── Malicious (0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87)
+    └── Log
+        └── message: Malicious fallback was succesfully called
+
+None
+Terminating local RPC client...

@@ -35,15 +35,15 @@ def main():
 
     ### Eve executes a successful phishing attack by tricking Alice to call callFoo() in TopLevel ###
 
-    #print(f"Alice's contract balance: {web3.fromWei(alice_wallet.balance(), 'ether')} ether")
-    #print(f"Eve's personal balance: {web3.fromWei(eve_bad_personal.balance(), 'ether')} ether")
-    #print(f"Alice's personal balance: {web3.fromWei(alice_good_personal.balance(), 'ether')} ether")
+    print(f"Alice's contract balance: {web3.fromWei(alice_wallet.balance(), 'ether')} ether")
+    print(f"Eve's personal balance: {web3.fromWei(eve_bad_personal.balance(), 'ether')} ether")
+    print(f"Alice's personal balance: {web3.fromWei(alice_good_personal.balance(), 'ether')} ether")
 
-    #tx_alice_gets_phished = top_level_bad.callFoo({"from": alice_good_personal})
+    tx_alice_gets_phished = top_level_bad.callFoo({"from": alice_good_personal})
 
-    #print(f"Alice's contract balance: {web3.fromWei(alice_wallet.balance(), 'ether')} ether")
-    #print(f"Alice's personal balance: {web3.fromWei(alice_good_personal.balance(), 'ether')} ether")
-    #print(f"Eve's personal balance: {web3.fromWei(eve_bad_personal.balance(), 'ether')} ether")
-    #print(tx_alice_gets_phished.info())
+    print(f"Alice's contract balance: {web3.fromWei(alice_wallet.balance(), 'ether')} ether")
+    print(f"Alice's personal balance: {web3.fromWei(alice_good_personal.balance(), 'ether')} ether")
+    print(f"Eve's personal balance: {web3.fromWei(eve_bad_personal.balance(), 'ether')} ether")
+    print(tx_alice_gets_phished.info())
 
 
