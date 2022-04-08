@@ -4,7 +4,9 @@ pragma solidity ^0.8.10;
 import "../interfaces/IKlimaRetirementAggregator.sol";
 import "../interfaces/IERC20.sol";
 
-contract OneUpCuban {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract OneUpCuban is Ownable {
 
     uint public minDeposit;
     uint public targetAmount;
@@ -13,7 +15,6 @@ contract OneUpCuban {
     
     address public immutable KlimaRetirementAggregator;
     address public immutable BCT;
-    address public immutable owner; /*TESTING */
 
     mapping(uint => address) public winners;
 
@@ -24,7 +25,6 @@ contract OneUpCuban {
         BCT = _BCT; /* JUST FOR LOCAL TESTING */
         targetAmount =  101000000000000000000 ; /*101 BCT*/
         minDeposit =    1000000000000000000; /* 1 BCT */
-        owner = msg.sender; /* JUST FOR LOCAL TESTING */
         
     }
 
@@ -40,38 +40,19 @@ contract OneUpCuban {
 
         if (balance >= targetAmount) {
 
-            /* approve spend, and retire 101 BCT */
-            /* winner is beneficiary */
+            _offsetBalance(targetAmount, "#1UpCuban", "Cuban was one-upped!");
 
-            /* COMMENT OUT FOR LOCAL TESTING AND REPLACE WITH TRANSFER TO DEPLOYER */
-            /*
-            IERC20(BCT).approve(KlimaRetirementAggregator, targetAmount);
-            IKlimaRetirementAggregator(KlimaRetirementAggregator).retireCarbon(BCT, BCT, targetAmount, true, msg.sender, "#1UpCuban", "Cuban was one-upped!");
-            */
-            
-            IERC20(BCT).transfer(owner, targetAmount); /* JUST FOR LOCAL TESTING */
-
-            updateBCTBalance();
-
-            /* set winner send remaining change to winner */
+            /* set winner */
             winners[CubanCount] = msg.sender;
-            sendExtra();
+
+            /* send remaining change to winner */
+            _sendExtra();
+
+            /* Increment Cuban count */
+            CubanCount++;
 
         }
 
-    }
-
-    function sendExtra() private {
-
-        require(msg.sender == winners[CubanCount], "Not winner of current round - can't claim dust");
-
-        IERC20(BCT).transfer(msg.sender, balance);
-
-        updateBCTBalance();
-
-        /* Increment Cuban count */
-        CubanCount++;
-        
     }
 
     function updateBCTBalance() public {
@@ -87,5 +68,51 @@ contract OneUpCuban {
         return balance;
 
     }
+
+    function offsetBalanceOwner() onlyOwner public {
+        
+        _offsetBalance(balance, "#1UpCuban", "Cuban was not one-upped, but we made a difference!");
+
+    }
+
+    function changeTargetAmount(uint newTarget) onlyOwner public {
+
+        targetAmount = newTarget;
+
+    }
+
+    function changeMinDeposit(uint newMinDeposit) onlyOwner public {
+
+        minDeposit = newMinDeposit;
+
+    }
+
+    function _sendExtra() private {
+
+        require(msg.sender == winners[CubanCount], "Not winner of current round - can't claim dust");
+
+        IERC20(BCT).transfer(msg.sender, balance);
+
+        updateBCTBalance();
+        
+    }
+
+    function _offsetBalance(uint offsetAmount, string memory beneficiary, string memory message) private {
+        /* approve spend, and retire 101 BCT */
+        /* winner is beneficiary */
+
+        /* COMMENT OUT FOR LOCAL TESTING AND REPLACE WITH TRANSFER TO DEPLOYER */
+        /*
+        IERC20(BCT).approve(KlimaRetirementAggregator, targetAmount);
+        IKlimaRetirementAggregator(KlimaRetirementAggregator).retireCarbon(BCT, BCT, offsetAmount, true, msg.sender, beneficiary, message);
+        */
+            
+        IERC20(BCT).transfer(owner(), offsetAmount); /* JUST FOR LOCAL TESTING */
+
+        updateBCTBalance();
+        
+    }
+
+    
 
 }
