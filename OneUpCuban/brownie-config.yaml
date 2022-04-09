@@ -1,3 +1,4 @@
+dotenv: .env
 dependencies:
     - OpenZeppelin/openzeppelin-contracts@4.4.1
 compiler:
