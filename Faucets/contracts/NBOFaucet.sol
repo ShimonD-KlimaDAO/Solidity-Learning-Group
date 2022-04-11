@@ -46,7 +46,7 @@ contract NBOFaucet is WhitelistFaucet {
     }  
 
     // Updates the underlying token decimal number
-     function setTokenAddress(uint _decimals) external onlyOwner {
+     function setTokenDecimals(uint _decimals) external onlyOwner {
         tokendecimals = _decimals;
     }    
      

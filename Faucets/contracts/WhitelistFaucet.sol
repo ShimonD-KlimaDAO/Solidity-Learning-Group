@@ -12,7 +12,7 @@ contract WhitelistFaucet is Ownable{
     bool public whiteListEnabled;
 
     modifier isWhitelisted(address _address) {
-        require(whitelistedAddresses[_address] || whiteListEnabled == false, "Whitelist: You need to be whitelisted");
+        require(whitelistedAddresses[_address] == true || whiteListEnabled == false, "Whitelist: You need to be whitelisted");
         _;
     }
 
